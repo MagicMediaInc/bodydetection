@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>Pick Your Glasses</title>
+	<title>Seleccione tu chaleco</title>
 	
+	<script src="./objectdetect/js/jquery.js"></script>
 	<script src="./objectdetect/js/compatibility.js"></script>
 	<script src="./objectdetect/js/smoother.js"></script>
 	
@@ -11,12 +12,76 @@
 	<script src="./objectdetect/js/objectdetect.upperbody.js"></script>
 	
 	<script>
+
+	var positions = [];
+
+	var tempArray = [];
+
+	var loadArrayPosition = function( position ){
+
+		tempArray.x = 0;
+		tempArray.y = 0;
+		tempArray.w = 0;
+		tempArray.h = 0;
+
+		if(positions.length < 20){
+
+			positions[positions.length] = position;
+
+		}
+		else{
+
+			for( i = 0 ; i < positions.length-1 ; i++ ){
+				positions[i] = positions[i+1];
+				tempArray.x += positions[i][0];
+				tempArray.y += positions[i][1];
+				tempArray.w += positions[i][2];
+				tempArray.h += positions[i][3];
+			}
+
+			positions[positions.length-1] = position;
+
+		}
+
+		tempArray.x /= 20;
+		tempArray.y /= 20;
+		tempArray.w /= 20;
+		tempArray.h /= 20;
+
+		return tempArray;
+
+	};
+
+	var captureImage = function() {
+
+		console.log('click');
+
+        $output = $("#output");
+        video = $("#video").get(0);
+        chaleco = $("#chaleco").get(0);
+    	var scale = 1;
+
+        var canvas = document.createElement("canvas");
+        canvas.width = video.videoWidth * scale;
+        canvas.height = video.videoHeight * scale;
+        canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
+        canvas.getContext('2d').drawImage(chaleco, tempArray.x * scale - 10 * scale, tempArray.y * scale - 80 * scale, tempArray.w * scale, tempArray.h * scale);
+
+        $output.empty();
+        var img = document.createElement("img");
+        img.src = canvas.toDataURL();
+        $output.prepend(img);
+
+    };
+
 	window.onload = function() {
+
+        $("#capture").click(captureImage); 
 	
 		var smoother = new Smoother([0.9999999, 0.9999999, 0.999, 0.999], [0, 0, 0, 0]),
 			video = document.getElementById('video'),
 			canvas = document.getElementById('canvas'),
-			glasses = document.getElementById('glasses'),
+			chaleco = document.getElementById('chaleco'),
 			detector;
 
 			var ctx=canvas.getContext("2d");
@@ -63,32 +128,34 @@
 					coord[3] *= video.videoHeight / detector.canvas.height;
 
 					fill = [
-						~~(coord[0] + coord[2] * 1.0/8 + video.offsetLeft),
-						~~(coord[1] + coord[3] * 0.8/8 + video.offsetTop),
-						~~(coord[2] * 6/8),
-						~~(coord[3] * 6/8)
+						~~(coord[0] + coord[2] * 0.8/8 + video.offsetLeft),
+						~~(coord[1] + coord[3] * 3.2/8 + video.offsetTop),
+						~~(coord[2] * 6/7),
+						~~(coord[3] * 6/5)
 					];
 
-					ctx.fillRect(fill[0],fill[1],fill[2],fill[3]);
+					pos = loadArrayPosition(fill);
+
+					//ctx.fillRect(pos.x,pos.y,pos.w,pos.h);
 					// ctx.fillRect(5,0,160,120);
-					/*
-					// Display glasses overlay: 
-					glasses.style.left    = ~~(coord[0] + coord[2] * 1.0/8 + video.offsetLeft) + 'px';
-					glasses.style.top     = ~~(coord[1] + coord[3] * 0.8/8 + video.offsetTop) + 'px';
-					glasses.style.width   = ~~(coord[2] * 6/8) + 'px';
-					glasses.style.height  = ~~(coord[3] * 6/8) + 'px';
-					glasses.style.opacity = 1;*/
+					
+					// Display chaleco overlay: 
+					chaleco.style.left    = pos.x + 'px';
+					chaleco.style.top     = pos.y + 'px';
+					chaleco.style.width   = pos.w + 'px';
+					chaleco.style.height  = pos.h + 'px';
+					chaleco.style.opacity = 1;
 					
 				} else {
-					var opacity = glasses.style.opacity - 0.2;
-					glasses.style.opacity = opacity > 0 ? opacity : 0;
+					var opacity = chaleco.style.opacity - 0.2;
+					chaleco.style.opacity = opacity > 0 ? opacity : 0;
 				}
 			}
 		}
 		
 		[].slice.call(document.getElementById('list').children).forEach(function(e) {
 			e.addEventListener('click', function() {
-				glasses.src = e.src;
+				chaleco.src = e.src;
 			}, false);
 		});
 	};
@@ -97,21 +164,21 @@
 </head>
 
 <body>
-	<h1>Pick Your Glasses</h1>
+	<h1>Seleccione un Chaleco Antibalas</h1>
 	<video id="video" style="float: left; margin-right: 1em;"></video>
 	<canvas id="canvas" style="border: 1px solid #000000;position:absolute; left: 8px;" width="638" height="478"></canvas>
 	<div id="list">
-		<div>
-			hdklsahdajsas
-		</div>
-		<!-- <img src="img/sunglasses_0.png" style="width: 117px;">
-		<img src="img/sunglasses_1.png" style="width: 117px;">
-		<img src="img/sunglasses_2.png" style="width: 117px;">
-		<img src="img/sunglasses_3.png" style="width: 117px;">
-		<img src="img/sunglasses_4.png" style="width: 117px;">
-		<img src="img/sunglasses_5.png" style="width: 117px;">
-		<img src="img/sunglasses_6.png" style="width: 117px;">
-		<img src="img/sunglasses_7.png" style="width: 117px;"> -->
+		<!-- <img src="img/sunchaleco_0.png" style="width: 117px;">
+		<img src="img/sunchaleco_1.png" style="width: 117px;">
+		<img src="img/sunchaleco_2.png" style="width: 117px;">
+		<img src="img/sunchaleco_3.png" style="width: 117px;">
+		<img src="img/sunchaleco_4.png" style="width: 117px;">
+		<img src="img/sunchaleco_5.png" style="width: 117px;">
+		<img src="img/sunchaleco_6.png" style="width: 117px;">
+		<img src="img/sunchaleco_7.png" style="width: 117px;"> -->
 	</div>
+	<img id="chaleco" src="chaleco.png" style="position: absolute; display: block; opacity: 0">
+	<button id="capture">Foto</button>
+<div id="output"></div>
 </body>
 </html>
