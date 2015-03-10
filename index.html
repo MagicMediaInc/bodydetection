@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<title>Seleccione tu chaleco</title>
-	
+	<style rel="stylesheet" href="css/style.css"></style>
 	<script src="./objectdetect/js/jquery.js"></script>
 	<script src="./objectdetect/js/compatibility.js"></script>
 	<script src="./objectdetect/js/smoother.js"></script>
@@ -15,9 +15,13 @@
 </head>
 
 <body>
+<section id="wrapper">
+	<div class="logo">
+		
+	</div>
 	<h1>Seleccione un Chaleco Antibalas</h1>
 	<video id="video" style="float: left; margin-right: 1em;"></video>
-	<canvas id="canvas" style="border: 1px solid #000000;position:absolute; left: 8px;" width="638" height="478"></canvas>
+	<canvas id="canvas" width="638" ></canvas>
 	<div id="list">
 		<!-- <img src="img/sunchaleco_0.png" style="width: 117px;">
 		<img src="img/sunchaleco_1.png" style="width: 117px;">
@@ -31,5 +35,6 @@
 	<img id="chaleco" src="chaleco.png" style="position: absolute; display: block; opacity: 0">
 	<button id="capture">Foto</button>
 <div id="output"></div>
+<div class="clearfix"></div>
 </body>
 </html>
