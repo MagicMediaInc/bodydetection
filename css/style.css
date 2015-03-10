@@ -20,6 +20,7 @@ video{
 	vertical-align: middle;
 }
 #output{
+	position: relative;
 	vertical-align: top;
 	margin-top: 20%;
 	display: block;
@@ -37,8 +38,8 @@ video{
     padding: 7px; /*Inner border size*/
     background: #fff;
 	width: 100%;
-/*	position:absolute;
-	right: 0px;*/
+	position:absolute;
+	right: 0px;
 	-webkit-transform: rotate(7deg); /* Chrome, Safari, Opera */
     transform: rotate(10deg);
 }

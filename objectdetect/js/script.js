@@ -37,10 +37,11 @@
 		return tempArray;
 
 	};
-
+	var zindex = 1;
 	var captureImage = function() {
 
 		console.log('click');
+		console.log(zindex);
 
         $output = $("#output");
         video = $("#video").get(0);
@@ -52,10 +53,15 @@
         canvas.height = video.videoHeight * scale;
         canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
         canvas.getContext('2d').drawImage(chaleco, tempArray.x * scale - 10 * scale, tempArray.y * scale - 80 * scale, tempArray.w * scale, tempArray.h * scale);
-
-        $output.empty();
+        zindex++;
+        // $output.empty();
+        var min = -10;
+		var max = 10;
+		var random = Math.floor(Math.random() * (max - min + 1)) + min;
         var img = document.createElement("img");
         img.src = canvas.toDataURL();
+        $(img).css("z-index",zindex);
+        $(img).css({ WebkitTransform: 'rotate(' + random + 'deg)'});
         $output.prepend(img);
 
     };
