@@ -1,6 +1,6 @@
 body{
 	position: relative;
-	background-color: #219d55;
+	background-color: #454545;
 }
 canvas{
 	display: none;
@@ -33,8 +33,8 @@ video{
 	display: block;
 }
 #output img{
-	border: 5px solid #ddd;
-    padding: 5px; /*Inner border size*/
+	border: 2px solid #ddd;
+    padding: 7px; /*Inner border size*/
     background: #fff;
 	width: 100%;
 /*	position:absolute;
