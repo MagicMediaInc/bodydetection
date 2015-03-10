@@ -1,16 +1,44 @@
 body{
+	position: relative;
 	background-color: #689F38;
 }
 canvas{
-	width:80% !important;
+	display: none;
+}
+video{
+	width:70% !important;
+	border: 20px solid #8BC34A;
+	height: 50% !important; 
+}
+#output, video{
+	display: inline-block;
+}
+#output{
+	width: 20% !important;
+	vertical-align: top;
+}
+.borderpicture{
+	border: 1px solid #000;
+	display: block;
+}
+#output img{
+	border: 5px solid #ddd;
+    padding: 5px; /*Inner border size*/
+    background: #fff;
+	width: 100%;
+}
+.logo{
+	position: absolute;
+	margin: 0 auto;	
 }
 #wrapper{
 	width: 80%;
-	margin: 50px auto;
+	margin: 0px auto;
 	border: 20px solid #8BC34A;
 	background: #FFFFFF;
 	padding: 40px;
 }
+
 .clearfix{
 	clear: both;
 	display: block;

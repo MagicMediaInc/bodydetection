@@ -7,7 +7,7 @@
 	<script src="./objectdetect/js/jquery.js"></script>
 	<script src="./objectdetect/js/compatibility.js"></script>
 	<script src="./objectdetect/js/smoother.js"></script>
-	
+	<script src="./objectdetect/js/canvas.js"></script>
 	<script src="./objectdetect/js/objectdetect.js"></script>
 	<script src="./objectdetect/js/objectdetect.upperbody.js"></script>
 	<script src="./objectdetect/js/objectdetect.handopen.js"></script>
@@ -15,13 +15,14 @@
 </head>
 
 <body>
+<div class="logo">
+	<img src="img/logo-4.png" alt="">
+</div>
 <section id="wrapper">
-	<div class="logo">
-		
-	</div>
-	<h1>Seleccione un Chaleco Antibalas</h1>
-	<video id="video" style="float: left; margin-right: 1em;"></video>
-	<canvas id="canvas" width="638" ></canvas>
+	<!-- <h1>Seleccione un Chaleco Antibalas</h1> -->
+	<video id="video"></video>
+	<div id="output"></div>
+	<canvas id="canvas" ></canvas>
 	<div id="list">
 		<!-- <img src="img/sunchaleco_0.png" style="width: 117px;">
 		<img src="img/sunchaleco_1.png" style="width: 117px;">
@@ -34,7 +35,7 @@
 	</div>
 	<img id="chaleco" src="chaleco.png" style="position: absolute; display: block; opacity: 0">
 	<button id="capture">Foto</button>
-<div id="output"></div>
 <div class="clearfix"></div>
+</section>
 </body>
 </html>
