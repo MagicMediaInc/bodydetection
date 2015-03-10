@@ -67,7 +67,6 @@
 		var smoother = new Smoother([0.9999999, 0.9999999, 0.999, 0.999], [0, 0, 0, 0]),
 			video = document.getElementById('video'),
 			canvas = document.getElementById('canvas'),
-			canvas = document.getElementById('canvas'),
 			chaleco = document.getElementById('chaleco'),
 			detector;
 
