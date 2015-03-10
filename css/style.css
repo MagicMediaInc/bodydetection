@@ -9,7 +9,7 @@ video{
 	width:70% !important;
 	border: 20px solid #27ae60;
 	height: 50% !important; 
-	margin-right: 40px;
+	margin-right: 30px;
 }
 #output, video{
 	display: inline-block;
