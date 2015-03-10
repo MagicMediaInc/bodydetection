@@ -51,7 +51,7 @@
         canvas.width = video.videoWidth * scale;
         canvas.height = video.videoHeight * scale;
         canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
-        canvas.getContext('2d').drawImage(chaleco, tempArray.x * scale - 10 * scale, tempArray.y * scale - 80 * scale, tempArray.w * scale, tempArray.h * scale);
+        canvas.getContext('2d').drawImage(chaleco, tempArray.x * scale - 10 * scale, zempArray.y * scale - 80 * scale, tempArray.w * scale, tempArray.h * scale);
 
         $output.empty();
         var img = document.createElement("img");
