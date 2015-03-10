@@ -10,6 +10,7 @@
 	
 	<script src="./objectdetect/js/objectdetect.js"></script>
 	<script src="./objectdetect/js/objectdetect.upperbody.js"></script>
+	<script src="./objectdetect/js/objectdetect.handopen.js"></script>
 	
 	<script>
 
@@ -81,10 +82,53 @@
 		var smoother = new Smoother([0.9999999, 0.9999999, 0.999, 0.999], [0, 0, 0, 0]),
 			video = document.getElementById('video'),
 			canvas = document.getElementById('canvas'),
+			canvas = document.getElementById('canvas'),
 			chaleco = document.getElementById('chaleco'),
 			detector;
 
-			var ctx=canvas.getContext("2d");
+			var ctx = canvas.getContext("2d");
+
+			radius = 20;
+
+			circle_coords = [
+				{
+					x: 50,
+					y: 200,
+					color: "green",
+				},
+				{
+					x: 50,
+					y: 300,
+					color: "red",
+				},
+				{
+					x: 270,
+					y: 50,
+					color: "yellow",
+				},
+				{
+					x: 390,
+					y: 50,
+					color: "blue",
+				},
+				{
+					x: 590,
+					y: 200,
+					color: "pink",
+				},
+				{
+					x: 590,
+					y: 300,
+					color: "gray",
+				},
+			]
+
+			for(i = 0 ; i < circle_coords.length; i++){
+				ctx.beginPath();
+      			ctx.arc(circle_coords[i].x, circle_coords[i].y, radius, 0, 2 * Math.PI, false);
+	      		ctx.fillStyle = circle_coords[i].color;
+	      		ctx.fill();
+			}
 				
 		try {
 			compatibility.getUserMedia({video: true}, function(stream) {
@@ -112,6 +156,7 @@
 		      		var width = ~~(60 * video.videoWidth / video.videoHeight);
 					var height  =60;
 		      		detector = new objectdetect.detector(width, height, 1.1, objectdetect.upperbody);
+		      		handopen = new objectdetect.detector(width, height, 1.1, objectdetect.handopen);
 		      	}
           		
           		// Perform the actual detection:
