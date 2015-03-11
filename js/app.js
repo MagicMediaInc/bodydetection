@@ -94,10 +94,10 @@
 	contextSource.scale(-1, 1);
 
 	var image = {
-		h: 100,
-		w: 100,
-		x: 100,
-		y: 100
+		w: 200,
+		h: 250,
+		x: 200,
+		y: 200
 	};
 
 	var c = 5;
@@ -141,7 +141,7 @@
 
 	function drawVideo() {
 		contextSource.drawImage(video, 0, 0, video.width, video.height);
-		contextSource.drawImage($('#chaleco').get(0), image.x, image.y, 100, 100);
+		contextSource.drawImage($('#chaleco').get(0), image.x, image.y, image.w, image.h);
 	}
 
 	function blend() {
@@ -202,22 +202,30 @@
 
 		switch(action){
 			case 'scale-up':
+				image.h += 2;
+				image.w += 2;
+				image.x--;
+				image.y--;
 				// contextSource.drawImage($('#chaleco').get(0), 0, 0, 100, 100);
 				break;
 			case 'scale-down':
+				image.h -= 2;
+				image.w -= 2;
+				image.x++;
+				image.y++;
 				// contextSource.drawImage($('#chaleco').get(0), 0, 0, 100, 100);
 				break;
 			case 'x-plus':
-				image.x--;
+				image.x -= 5;
 				break;
 			case 'x-minus':
-				image.x++;
+				image.x += 5;
 				break;
 			case 'y-plus':
-				image.y++;
+				image.y += 5;
 				break;
 			case 'y-minus':
-				image.y--;
+				image.y -= 5;
 				break;			
 		}
 
