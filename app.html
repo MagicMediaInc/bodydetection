@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/html">
 <head>
+    <meta charset="utf-8">
     <title>JavaScript Motion Detection</title>
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="styles/main.css"/>
@@ -12,11 +13,9 @@
 <div id="container">
 
     <div id="header">
-        <div class="allow">Click "Allow" above to control stuff just by waving your hands.</div>
+        <div class="allow">Haga clic en "Permitir" a continuación para controlar el chaleco simplemente agitando sus manos..</div>
         <div class="instructions">Mueve tus manos, es divertido.</div>
-        <div class="browsersWithVideo">This demo lets you control stuff using motion detection in your browser. Install
-            <a href="https://www.google.com/landing/chrome/beta/" target="_blank">Chrome Beta</a> to play.
-        </div>
+        <div class="browsersWithVideo">Esta demo te permite controlar las cosas usando la detección de movimiento en su navegador.</div>
     </div>
 
     <div id="content">
@@ -36,8 +35,8 @@
         <canvas id="canvas-blended" width="640" height="480"></canvas>
 
         <div id="hotSpots">
-            <div id="scale-up" data-action="scale-up"></div>
-            <div id="scale-down" data-action="scale-down"></div>
+            <div id="scale-up" data-action="scale-up"><span style="font-weight:bold;font-size:20pt"></span></div>
+            <div id="scale-down" data-action="scale-down">-</div>
             <div id="y-plus" data-action="y-plus"><img src="images/arrows-bottom-round-icon.png" style="width:100%"></div>
             <div id="y-minus" data-action="y-minus"><img src="images/arrows-top-round-icon.png" style="width:100%"></div>
             <div id="x-plus" data-action="x-plus"><img src="images/arrows-right-round-icon.png" style="width:100%"></div>
