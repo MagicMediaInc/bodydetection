@@ -190,35 +190,35 @@ video {
 	width: 10%;
 	height: 10%;
 	top: 40%;
-	left: 5%;
+	left: 2.5%;
 	margin-top: -10%;
 }
 #scale-down {
 	width: 10%;
 	height: 10%;
 	bottom: 40%;
-	left: 5%;
+	left: 2.5%;
 	margin-bottom: -10%;
 }
 #y-plus {
 	width: 10%;
 	height: 10%;
 	bottom: 40%;
-	right: 5%;
+	right: 2.5%;
 	margin-bottom: -10%;
 }
 #y-minus {
 	width: 10%;
 	height: 10%;
 	top: 40%;
-	right: 5%;
+	right: 2.5%;
 	margin-top: -10%;
 }
 
 #x-plus {
 	width: 10%;
 	height: 10%;
-	top: 0;
+	top: 2.5%;
 	right: 40%;
 	margin-right: -10%;
 }
@@ -226,7 +226,7 @@ video {
 #x-minus {
 	width: 10%;
 	height: 10%;
-	top: 0;
+	top: 2.5%;
 	left: 40%;
 	margin-left: -10%;
 }
