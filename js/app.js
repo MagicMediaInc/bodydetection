@@ -276,7 +276,7 @@
 		var ctx = canvas.getContext('2d');
 		canvas.width = canvas.width;
 		hotSpots.forEach(function (o, i) {
-			ctx.strokeStyle = 'rgba(0,255,0,0.6)';
+			ctx.strokeStyle = 'rgba(0,0,255,1)';
 			ctx.lineWidth = 1;
 			ctx.strokeRect(o.x, o.y, o.width, o.height);
 		});
