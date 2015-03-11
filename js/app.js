@@ -48,6 +48,9 @@
 			event.stopPropagation();
 			return false;
 		});
+		setTimeout(function(){
+			enable_picture = true;
+		}, 10000);
 	});
 
 	function hasGetUserMedia() {
@@ -89,6 +92,8 @@
 	var contextSource = canvasSource.getContext('2d');
 	var contextBlended = canvasBlended.getContext('2d');
 
+	var taking_picture = false;
+	var enable_picture = false;
 	// mirror video
 	contextSource.translate(canvasSource.width, 0);
 	contextSource.scale(-1, 1);
@@ -183,6 +188,49 @@
 		}
 	}
 
+	var waitinPicture = null;
+
+	var zindex = 1;
+
+	var takePicture = function() {
+
+		console.log('taking_picture');
+
+		waitinPicture = setInterval(function(){
+		console.log("waiting");
+		},1000);;
+
+		setTimeout(function(){
+
+			clearInterval(waitinPicture);
+			$output = $("#output");
+	        camera = $("#canvas-source")[0];
+	        chaleco = $("#chaleco").get(0);
+	    	var scale = 1;
+
+	        // var canvas_output = document.createElement("canvas");
+	        // canvas_output.width = camera.videoWidth * scale;
+	        // canvas_output.height = camera.videoHeight * scale;
+	        // console.log(video);
+	        // canvas_output.getContext('2d').drawImage(video, 0, 0, video.width, video.height);
+	        // canvas_output.getContext('2d').drawImage($('#chaleco').get(0), image.x * scale, image.y * scale, image.w * scale, image.h * scale);
+	        zindex++;
+	        // $output.empty();
+	        var min = -10;
+			var max = 10;
+			var random = Math.floor(Math.random() * (max - min + 1)) + min;
+	        var img = document.createElement("img");
+	        img.src = canvasSource.toDataURL();
+	        $(img).css("z-index",zindex);
+	        $(img).css({ WebkitTransform: 'rotate(' + random + 'deg)'});
+        	$output.prepend(img);
+
+        	taking_picture = false;
+
+		}, 5000);        
+
+    };
+
 	function differenceAccuracy(target, data1, data2) {
 		if (data1.length != data2.length) return null;
 		var i = 0;
@@ -206,14 +254,12 @@
 				image.w += 2;
 				image.x--;
 				image.y--;
-				// contextSource.drawImage($('#chaleco').get(0), 0, 0, 100, 100);
 				break;
 			case 'scale-down':
 				image.h -= 2;
 				image.w -= 2;
 				image.x++;
 				image.y++;
-				// contextSource.drawImage($('#chaleco').get(0), 0, 0, 100, 100);
 				break;
 			case 'x-plus':
 				image.x -= 5;
@@ -225,6 +271,19 @@
 				image.y += 5;
 				break;
 			case 'y-minus':
+				image.y -= 5;
+				break;	
+			case 'take-picture':
+				console.log
+				if(enable_picture){
+					if(!taking_picture){
+						taking_picture = true;
+						takePicture();
+					}
+				} 
+				image.y -= 5;
+				break;	
+			case 'next-picture':
 				image.y -= 5;
 				break;			
 		}
@@ -249,6 +308,7 @@
 				// over a small limit, consider that a movement is detected
 				data = {confidence: average, spot: hotSpots[h]};
 				action = $(data.spot.el).attr('data-action');
+				console.log(action);
 				setImagePosition(action);
 				$(data.spot.el).trigger('motion', data);
 			}
