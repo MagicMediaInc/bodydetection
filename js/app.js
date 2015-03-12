@@ -49,6 +49,7 @@
 			return false;
 		});
 		setTimeout(function(){
+			console.log('enable_picture');
 			enable_picture = true;
 		}, 10000);
 	});
@@ -224,7 +225,7 @@
 	        $(img).css("z-index",zindex);
 	        $(img).css({ WebkitTransform: 'rotate(' + random + 'deg)'});
         	$output.prepend(img);
-
+        	console.log('picture_taked');
         	taking_picture = false;
 
 		}, 5000);        
@@ -281,7 +282,6 @@
 						takePicture();
 					}
 				} 
-				image.y -= 5;
 				break;	
 			case 'next-picture':
 				image.y -= 5;
