@@ -30,6 +30,7 @@
 	$(window).resize(resize);
 	$(window).ready(function () {
 		resize();
+		$('.fancybox').fancybox();
 		$('#watchVideo').click(function () {
 			$(".browsers").fadeOut();
 			$(".browsersWithVideo").delay(300).fadeIn();
@@ -193,12 +194,63 @@
 
 	var zindex = 1;
 
+	var decreaseCounter = 5;
+
+	var decreaserMessages = [
+		'AHORA!',
+		'Casi, casi',
+		'Falta poco',
+		'Posa rápido',
+		];
+
+	var decreaseNotific8 = function(){
+		var params = {
+            life: 1000,
+            theme: 'lemon',
+            heading: "Tomando Fotografía...",
+            icon: ""+decreaseCounter,
+            sticky: false,
+            horizontalEdge: 'top',
+            verticalEdge: 'bottom',
+            onInit: function(data) {
+              if (window.console) {
+                // console.log('--onInit--');
+                // console.log('data:');
+                // console.log(data);
+              }
+            },
+            onCreate: function(notification, data) {
+              if (window.console) {
+                // console.log('--onCreate--');
+                // console.log('notification:');
+                // console.log(notification);
+                // console.log('data:');
+                // console.log(data);
+              }
+            },
+            onClose: function(notification, data) {
+              if (window.console) {
+                // console.log('--onClose--');
+                // console.log('notification:');
+                // console.log(notification);
+                // console.log('data:');
+                // console.log(data);
+              }
+            }
+          },
+          text = decreaserMessages[decreaseCounter];
+		  $.notific8(text, params);
+	}
+
 	var takePicture = function() {
 
 		console.log('taking_picture');
 
 		waitinPicture = setInterval(function(){
-		console.log("waiting");
+			decreaseCounter--;
+			console.log('decreaser: '+decreaseCounter);
+			decreaseNotific8();
+			console.log("waiting");
 		},1000);;
 
 		setTimeout(function(){

@@ -1,8 +1,25 @@
 /** @author Will Steinmetz  Styles for the notific8 plug-in for jQuery  Copyright (c)2014, Will Steinmetz Licensed under the BSD license. http://opensource.org/licenses/BSD-3-Clause */
-@font-face { font-family: "notific8"; src: url("fonts/notific8.eot"); src: url("fonts/notific8.eot?#iefix") format("embedded-opentype"), url("fonts/notific8.woff") format("woff"), url("fonts/notific8.ttf") format("truetype"), url("fonts/notific8.svg#notific8") format("svg"); font-weight: normal; font-style: normal; }
-[data-icon]:before { font-family: "notific8" !important; content: attr(data-icon); font-style: normal !important; font-weight: normal !important; font-variant: normal !important; text-transform: none !important; speak: none; line-height: 1; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+/*@font-face { font-family: "notific8"; src: url("fonts/notific8.eot"); src: url("fonts/notific8.eot?#iefix") format("embedded-opentype"), url("fonts/notific8.woff") format("woff"), url("fonts/notific8.ttf") format("truetype"), url("fonts/notific8.svg#notific8") format("svg"); font-weight: normal; font-style: normal; }*/
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Open Sans'), local('OpenSans'), url(./css/fonts/K88pR3goAWT7BTt32Z01m1tXRa8TVwTICgirnJhmVJw.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+20B4, U+2DE0-2DFF, U+A640-A69F;
+}
+[data-icon]:before { font-family: "Open Sans" !important; content: attr(data-icon); font-style: normal !important; font-weight: normal !important; font-variant: normal !important; text-transform: none !important; speak: none; line-height: 1; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
 
-[class^="notific8-fontastic-"]:before, [class*=" notific8-fontastic-"]:before { font-family: "notific8" !important; font-style: normal !important; font-weight: normal !important; font-variant: normal !important; text-transform: none !important; speak: none; line-height: 1; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+[class^="notific8-fontastic-"]:before, [class*=" notific8-fontastic-"]:before { font-family: "Open Sans" !important; font-style: normal !important; font-weight: normal !important; font-variant: normal !important; text-transform: none !important; speak: none; line-height: 1; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+
+.notific8-fontastic-1:before { content: "1"; }
+
+.notific8-fontastic-2:before { content: "2"; }
+
+.notific8-fontastic-3:before { content: "3"; }
+
+.notific8-fontastic-4:before { content: "4"; }
+
+.notific8-fontastic-5:before { content: "5"; }
 
 .notific8-fontastic-trash-bin:before { content: "e"; }
 
