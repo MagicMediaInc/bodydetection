@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+	<script src="./objectdetect/js/jquery.js"></script>
+</head>
+
+<body>
+<section id="wrapper">
+	<!-- <h1>Seleccione un Chaleco Antibalas</h1> -->
+	<form method="post" action="./ajax.php" id="email-form"> 
+		<div> 
+			<label>Nombre</label>
+			<input type="text" name="name"/>
+		</div>
+		<div> 
+			<label>Email</label>
+			<input type="email" name="email"/>
+		</div>
+		<button id="submit-button" type="submit">&nbsp;</button>
+	</form>
+</section>
+<script type="text/javascript">
+	$('#submit-button').on('click', function(e){
+		e.preventDefault();
+		$.ajax({
+		  type: "post",
+		  url: './ajax.php',
+		  data: $('#email-form').serialize(),
+		  success: function(data){
+		  	console.log('OK');
+		  	console.log(data);
+		  },
+		  error: function(err){
+		  	console.log("ERROR");
+		  },
+		  // dataType: 'json'
+		}).done(function(data){
+			console.log("DONE");
+			console.log(data);
+		});
+	});
+</script>
+</body>
+</html>
