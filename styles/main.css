@@ -15,21 +15,32 @@ body {
 	-ms-transition: background-color 200ms ease 600ms;
 	transition: background-color 200ms ease 600ms;
 }
-
 video {
 	display: none;
 }
-
-#container {
+#container{
+	display: block;
+	position: relative;
+	width: 80%;
+	margin: 0px auto;
+	margin-top:60px; 
+	padding-top: 0px;
 
 }
+#webcam{
+	/*display: block;*/
+}
 
+.chalecos{
+	display: none;
+}
 #content {
-	position: absolute;
+	display: inline-block;
+	/*position: absolute;
 	left: 0;
 	right: 0;
 	top: 0;
-	bottom: 0;
+	bottom: 0;*/
 	overflow: hidden;
 	z-index: 0;
 }
@@ -68,6 +79,7 @@ video {
 }
 
 #header {
+	display: none;
 	position: absolute;
 	height: 55px;
 	top: 0;
@@ -147,6 +159,7 @@ video {
 
 #canvas-source {
 	width: 100%;
+	display: none;
 }
 
 #canvas-source, #canvas-highlights {
@@ -218,7 +231,7 @@ video {
 #x-plus {
 	width: 10%;
 	height: 10%;
-	top: 2.5%;
+	top: 0px;
 	right: 40%;
 	margin-right: -10%;
 }
@@ -226,7 +239,7 @@ video {
 #x-minus {
 	width: 10%;
 	height: 10%;
-	top: 2.5%;
+	top: 0px;
 	left: 40%;
 	margin-left: -10%;
 }
@@ -254,9 +267,21 @@ video {
 }
 
 #output{
-	position:relative;
-	right: 0;
+	position:absolute;
+	display: inline-block;
+	top:28%;
+	right: 40px;
 	width:20%;
+	float: right;
+}
+
+#output img{
+	display: block;
+	width: 100% !important;
+	position: absolute;
+	border: 2px solid #ddd;
+    padding: 7px; /*Inner border size*/
+    background: #fff;
 }
 
 .link {

@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="./css/normalize.min.css" media="screen">
     <link rel="stylesheet" href="./css/jquery.notific8.css" media="screen">
     <link rel="stylesheet" href="styles/main.css"/>
+    <link rel="stylesheet" href="styles/art-studio/flaticon.css"/>
     <link id="favicon" rel="icon" type="image/ico" sizes="16x16" href="images/favicon.ico">
     <link id="favicon2x" rel="icon" type="image/png" sizes="32x32" href="images/icon.png">
 </head>
@@ -21,23 +22,14 @@
     </div>
 
     <div id="content">
-
+       
         <video id="webcam" autoplay width="640" height="480"></video>
-
-        <video id="video-demo" controls="controls" poster="videos/jsdetection.jpg" width="640" height="480"
-               onclick="if(/Android/.test(navigator.userAgent))this.play();">
-            <source src="videos/jsdetection.mp4" type="video/mp4"/>
-            <source src="videos/jsdetection.ogg" type="video/ogg"/>
-            <source src="videos/jsdetection.webm" type="video/webm"/>
-            Your browser doesn't support the HTML5 video tag.
-        </video>
-
         <canvas id="canvas-source" width="640" height="480"></canvas>
         <canvas id="canvas-highlights" width="640" height="480"></canvas>
         <canvas id="canvas-blended" width="640" height="480"></canvas>
 
         <div id="hotSpots">
-            <div id="take-picture" data-action="take-picture"><span style="font-weight:bold;font-size:20pt"></span></div>
+            <div id="take-picture" class="flaticon-photography16" data-action="take-picture"></div>
             <div id="next-picture" data-action="next-picture"><span style="font-weight:bold;font-size:20pt"></span></div>
             <div id="scale-up" data-action="scale-up"><span style="font-weight:bold;font-size:20pt"></span></div>
             <div id="scale-down" data-action="scale-down">-</div>
@@ -52,23 +44,7 @@
         </div>
     </div>
 
-    <div id="output">dwidbqwiudbquib</div>
-    <div class="loading">Cargando Componentes...</div>
-
-    <div class="backFromVideo"><a href="#">Atrás<a/></div>
-
-    <div class="introduction">
-        <p>Esta demo te permite controlar las cosas usando la detección de movimiento en su navegador.</p>
-
-        <p>Please allow access to your camera and microphone above.</p>
-    </div>
-
-    <div class="browsers">
-        <p>Esta demo te permite controlar las cosas usando la detección de movimiento en su navegador.</p>
- 
-        <p>Install <a href="https://www.google.com/landing/chrome/beta/" target="_blank">Chrome Beta</a> to play, or <a
-                href="#" id="watchVideo">watch this video</a> to check it out first.</p>
-    </div>
+    <div id="output"></div>
 
     <div id="footer">
         <div class="magic">Desarrollado por Magicmedia Inc.</div>
@@ -76,7 +52,7 @@
 
 </div>
 
-    <img id="chaleco" src="chaleco.png" style="position: absolute; display: block; opacity: 0">
+    <img class="chalecos" src="chaleco.png">
 
 <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script> -->
     <!-- Add jQuery library -->

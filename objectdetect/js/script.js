@@ -55,8 +55,8 @@
         canvas.getContext('2d').drawImage(chaleco, tempArray.x * scale - 10 * scale, tempArray.y * scale - 80 * scale, tempArray.w * scale, tempArray.h * scale);
         zindex++;
         // $output.empty();
-        var min = -10;
-		var max = 10;
+        var min = -13;
+		var max = 13;
 		var random = Math.floor(Math.random() * (max - min + 1)) + min;
         var img = document.createElement("img");
         img.src = canvas.toDataURL();
