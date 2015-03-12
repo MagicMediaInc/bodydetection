@@ -231,12 +231,32 @@ video {
 	margin-left: -10%;
 }
 
+#take-picture {
+	width: 10%;
+	height: 10%;
+	top: 2.5%;
+	left: 2.5%;
+}
+
+#next-picture {
+	width: 10%;
+	height: 10%;
+	top: 2.5%;
+	right: 2.5%;
+}
+
 #another {
 	width: 20%;
 	height: 10%;
 	top: 0;
 	left: 50%;
 	margin-left: -10%;
+}
+
+#output{
+	position:relative;
+	right: 0;
+	width:20%;
 }
 
 .link {
