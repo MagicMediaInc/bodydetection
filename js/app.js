@@ -51,7 +51,7 @@
 		setTimeout(function(){
 			console.log('enable_picture');
 			enable_picture = true;
-		}, 10000);
+		}, 5000);
 	});
 
 	function hasGetUserMedia() {
@@ -134,7 +134,7 @@
 			   window.oRequestAnimationFrame      ||
 			   window.msRequestAnimationFrame     ||
 			function (callback) {
-				window.setTimeout(callback, 1000 / 60);
+				window.setTimeout(callback, 1000 / 20);
 			};
 	})();
 
@@ -147,7 +147,7 @@
 
 	function drawVideo() {
 		contextSource.drawImage(video, 0, 0, video.width, video.height);
-		contextSource.drawImage($('#chaleco').get(0), image.x, image.y, image.w, image.h);
+		contextSource.drawImage($('.chalecos').get(0), image.x, image.y, image.w, image.h);
 	}
 
 	function blend() {
@@ -206,7 +206,7 @@
 			clearInterval(waitinPicture);
 			$output = $("#output");
 	        camera = $("#canvas-source")[0];
-	        chaleco = $("#chaleco").get(0);
+	        chaleco = $(".chalecos").get(0);
 	    	var scale = 1;
 
 	        // var canvas_output = document.createElement("canvas");

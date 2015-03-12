@@ -52,7 +52,7 @@ video{
 #output , video{
 	display: inline-block;
 }
-#wrapper{
+#container{
 	width: 80%;
 	margin: 0px auto;
 	border: 20px solid #27ae60;
