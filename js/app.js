@@ -96,6 +96,11 @@
 
 	var taking_picture = false;
 	var enable_picture = false;
+
+	var chaleco_pos = 0;
+	var chaleco = $('.chalecos').get(chaleco_pos);
+	var changing_image = false;
+
 	// mirror video
 	contextSource.translate(canvasSource.width, 0);
 	contextSource.scale(-1, 1);
@@ -148,7 +153,7 @@
 
 	function drawVideo() {
 		contextSource.drawImage(video, 0, 0, video.width, video.height);
-		contextSource.drawImage($('.chalecos').get(0), image.x, image.y, image.w, image.h);
+		contextSource.drawImage(chaleco, image.x, image.y, image.w, image.h);
 	}
 
 	function blend() {
@@ -260,7 +265,6 @@
 			clearInterval(waitinPicture);
 			$output = $("#output");
 	        camera = $("#canvas-source")[0];
-	        chaleco = $(".chalecos").get(0);
 	    	var scale = 1;
 
 	        // var canvas_output = document.createElement("canvas");
@@ -301,6 +305,21 @@
 		}
 	}
 
+	function changeImage(){
+
+		if(!changing_image){
+			console.log('changin image');
+			changing_image = true;
+			chaleco_pos++;
+			if(chaleco_pos == $('.chalecos').length) chaleco_pos = 0;
+			chaleco = $('.chalecos').get(chaleco_pos);
+			setTimeout(function(){
+				changing_image = false;
+			}, 2000);
+		}
+
+	}
+
 	function setImagePosition(action){
 
 		switch(action){
@@ -338,7 +357,7 @@
 				} 
 				break;	
 			case 'next-picture':
-				image.y -= 5;
+				changeImage();
 				break;			
 		}
 
