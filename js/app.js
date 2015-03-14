@@ -305,14 +305,14 @@
 
 		switch(action){
 			case 'scale-up':
-				image.h += 2;
 				image.w += 2;
+				image.h = image.h/(image.w-2)*image.w;
 				image.x--;
 				image.y--;
 				break;
 			case 'scale-down':
-				image.h -= 2;
 				image.w -= 2;
+				image.h = image.h/(image.w+2)*image.w;
 				image.x++;
 				image.y++;
 				break;
