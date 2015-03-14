@@ -201,6 +201,8 @@
 		'Casi, casi',
 		'Falta poco',
 		'Posa rápido',
+		'Vamos a Tomar la Foto',
+		'Camara Activada',
 		];
 
 	var decreaseNotific8 = function(){
@@ -279,7 +281,7 @@
         	$output.prepend(img);
         	console.log('picture_taked');
         	taking_picture = false;
-
+        	decreaseCounter = 5;
 		}, 5000);        
 
     };
