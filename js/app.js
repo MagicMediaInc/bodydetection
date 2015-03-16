@@ -154,6 +154,7 @@
 	function drawVideo() {
 		contextSource.drawImage(video, 0, 0, video.width, video.height);
 		contextSource.drawImage(chaleco, image.x, image.y, image.w, image.h);
+
 	}
 
 	function blend() {
@@ -199,7 +200,7 @@
 
 	var zindex = 1;
 
-	var decreaseCounter = 5;
+	var decreaseCounter = 4;
 
 	var decreaserMessages = [
 		'AHORA!',
@@ -220,6 +221,7 @@
             horizontalEdge: 'top',
             verticalEdge: 'bottom',
             onInit: function(data) {
+
               if (window.console) {
                 // console.log('--onInit--');
                 // console.log('data:');
@@ -285,9 +287,13 @@
 	        $(img).css({ WebkitTransform: 'rotate(' + random + 'deg)'});
 	        document.getElementById('camera-shutter-audio').play();
         	$output.prepend(img);
+        	$output.children().removeClass("active-picture");
+        	$(img).last().addClass("active-picture")
+			console.log ($(img).last());
         	console.log('picture_taked');
         	taking_picture = false;
         	decreaseCounter = 5;
+
 		}, 5000);        
 
     };
@@ -416,4 +422,26 @@
 			ctx.strokeRect(o.x, o.y, o.width, o.height);
 		});
 	}
+
+	$("#facebook").on("click", publish);
+
+	function publish(){
+		alert("Have been clicked on me");
+		var imgURL=$(".active-picture").attr("src");//change with your external photo url
+		alert(imgURL);
+      FB.api('/me/photos', 'post', {
+          message:'photo description',
+          url:imgURL        
+      }, function(response){
+
+          if (!response || response.error) {
+              console.log(response.error);
+              console.log(FB.getLoginStatus());
+          } else {
+              alert('Post ID: ' + response.id);
+          }
+
+      });
+	}
+
 })();

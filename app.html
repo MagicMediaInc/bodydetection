@@ -8,11 +8,19 @@
     <link rel="stylesheet" href="./css/jquery.notific8.css" media="screen">
     <link rel="stylesheet" href="styles/main.css"/>
     <link rel="stylesheet" href="styles/art-studio/flaticon.css"/>
+    <link rel="stylesheet" href="styles/font-awesome.min.css"/>
     <link id="favicon" rel="icon" type="image/ico" sizes="16x16" href="images/favicon.ico">
     <link id="favicon2x" rel="icon" type="image/png" sizes="32x32" href="images/icon.png">
 </head>
 <body>
-
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&appId=868996659810049&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 <div id="container">
 
     <div id="header">
@@ -30,8 +38,8 @@
 
         <div id="hotSpots">
             <div id="take-picture" class="flaticon-photography16" data-action="take-picture"></div>
-            <div id="next-picture" data-action="next-picture"><span style="font-weight:bold;font-size:20pt"></span></div>
-            <div id="scale-up" data-action="scale-up"><span style="font-weight:bold;font-size:20pt"></span></div>
+            <div id="next-picture" data-action="next-picture"></span></div>
+            <div id="scale-up" data-action="scale-up"></div>
             <div id="scale-down" data-action="scale-down">-</div>
             <div id="y-plus" data-action="y-plus"><img src="images/arrows-bottom-round-icon.png" style="width:100%"></div>
             <div id="y-minus" data-action="y-minus"><img src="images/arrows-top-round-icon.png" style="width:100%"></div>
@@ -43,12 +51,12 @@
                     src="http://s.ytimg.com/yt/img/logos/youtube_logo_standard_againstwhite-vflKoO81_.png" width="100%"></a> -->
         </div>
     </div>
-    <a href="./email.html" class="fancybox fancybox.ajax">
-    <div id="output"></div>
-    </a>
-
+    <div id="output" >
+        
+    <button id="facebook"></button>
+    </div>
     <div id="footer">
-        <div class="magic">Desarrollado por Magicmedia Inc.</div>
+        <div class="magic"><img src="img/logo-4.png"></div>
     </div>
 
 </div>
@@ -87,8 +95,6 @@
 <script type="text/javascript" src="./plugins/fancybox/helpers/jquery.fancybox-media.js?v=1.0.6"></script>
 <script src="js/app.js"></script>
 <script src="js/sample.js"></script>
-<script type="text/javascript">
-
-</script>
+<div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button"></div>
 </body>
 </html>
