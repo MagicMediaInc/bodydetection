@@ -258,6 +258,7 @@
 			console.log('decreaser: '+decreaseCounter);
 			decreaseNotific8();
 			console.log("waiting");
+	        document.getElementById('censor-beep-audio').play();
 		},1000);;
 
 		setTimeout(function(){
@@ -282,6 +283,7 @@
 	        img.src = canvasSource.toDataURL();
 	        $(img).css("z-index",zindex);
 	        $(img).css({ WebkitTransform: 'rotate(' + random + 'deg)'});
+	        document.getElementById('camera-shutter-audio').play();
         	$output.prepend(img);
         	console.log('picture_taked');
         	taking_picture = false;
