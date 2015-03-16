@@ -256,9 +256,9 @@
 		console.log('taking_picture');
 
 		waitinPicture = setInterval(function(){
-			decreaseCounter--;
 			console.log('decreaser: '+decreaseCounter);
 			decreaseNotific8();
+			decreaseCounter--;
 			console.log("waiting");
 	        document.getElementById('censor-beep-audio').play();
 		},1000);;
@@ -288,7 +288,7 @@
 	        document.getElementById('camera-shutter-audio').play();
         	$output.prepend(img);
         	$output.children().removeClass("active-picture");
-        	$(img).last().addClass("active-picture")
+        	$(img).last().addClass("active-picture");
 			console.log ($(img).last());
         	console.log('picture_taked');
         	taking_picture = false;
