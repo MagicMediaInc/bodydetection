@@ -200,9 +200,10 @@
 
 	var zindex = 1;
 
-	var decreaseCounter = 4;
+	var decreaseCounter = 5;
 
 	var decreaserMessages = [
+		'',
 		'AHORA!',
 		'Casi, casi',
 		'Falta poco',
@@ -221,29 +222,15 @@
             horizontalEdge: 'top',
             verticalEdge: 'bottom',
             onInit: function(data) {
-
               if (window.console) {
-                // console.log('--onInit--');
-                // console.log('data:');
-                // console.log(data);
               }
             },
             onCreate: function(notification, data) {
               if (window.console) {
-                // console.log('--onCreate--');
-                // console.log('notification:');
-                // console.log(notification);
-                // console.log('data:');
-                // console.log(data);
               }
             },
             onClose: function(notification, data) {
               if (window.console) {
-                // console.log('--onClose--');
-                // console.log('notification:');
-                // console.log(notification);
-                // console.log('data:');
-                // console.log(data);
               }
             }
           },
@@ -270,14 +257,8 @@
 	        camera = $("#canvas-source")[0];
 	    	var scale = 1;
 
-	        // var canvas_output = document.createElement("canvas");
-	        // canvas_output.width = camera.videoWidth * scale;
-	        // canvas_output.height = camera.videoHeight * scale;
-	        // console.log(video);
-	        // canvas_output.getContext('2d').drawImage(video, 0, 0, video.width, video.height);
-	        // canvas_output.getContext('2d').drawImage($('#chaleco').get(0), image.x * scale, image.y * scale, image.w * scale, image.h * scale);
 	        zindex++;
-	        // $output.empty();
+
 	        var min = -10;
 			var max = 10;
 			var random = Math.floor(Math.random() * (max - min + 1)) + min;
@@ -294,7 +275,7 @@
         	taking_picture = false;
         	decreaseCounter = 5;
 
-		}, 5000);        
+		}, 6000);        
 
     };
 
@@ -332,14 +313,14 @@
 
 		switch(action){
 			case 'scale-up':
-				image.w += 2;
-				image.h = image.h/(image.w-2)*image.w;
+				image.w += 3;
+				image.h = image.h/(image.w-3)*image.w;
 				image.x--;
 				image.y--;
 				break;
 			case 'scale-down':
-				image.w -= 2;
-				image.h = image.h/(image.w+2)*image.w;
+				image.w -= 3;
+				image.h = image.h/(image.w+3)*image.w;
 				image.x++;
 				image.y++;
 				break;
@@ -378,15 +359,11 @@
 			var i = 0;
 			var average = 0;
 			while (i < (blendedData.data.length * 0.25)) {
-				// make an average between the color channel
 				average += (blendedData.data[i * 4] + blendedData.data[i * 4 + 1] + blendedData.data[i * 4 + 2]) / 3;
 				++i;
 			}
-			// calculate an average between the color values of the spot area
 			average = Math.round(average / (blendedData.data.length * 0.25));
 			if (average > 10) {
-
-				// over a small limit, consider that a movement is detected
 				data = {confidence: average, spot: hotSpots[h]};
 				action = $(data.spot.el).attr('data-action');
 				console.log(action);
