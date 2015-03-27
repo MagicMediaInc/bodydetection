@@ -34,6 +34,10 @@ video {
 .chalecos{
 	display: none;
 }
+
+.vests{
+	display: none;
+}
 #content {
 	display: inline-block;
 	/*position: absolute;
@@ -201,28 +205,28 @@ video {
 /* Sample hotspots */
 #scale-up {
 	width: 10%;
-	height: 10%;
+	height: 13%;
 	top: 40%;
 	left: 4%;
 	margin-top: -10%;
 }
 #scale-down {
 	width: 10%;
-	height: 10%;
+	height: 13%;
 	bottom: 40%;
 	left: 4%;
 	margin-bottom: -10%;
 }
 #y-plus {
 	width: 10%;
-	height: 10%;
+	height: 13%;
 	bottom: 40%;
 	right: 0%;
 	margin-bottom: -15%;
 }
 #y-minus {
 	width: 10%;
-	height: 10%;
+	height: 13%;
 	top: 40%;
 	right: 0%;
 	margin-top: -5%;
@@ -230,7 +234,7 @@ video {
 
 #x-plus {
 	width: 10%;
-	height: 10%;
+	height: 13%;
 	top: 5%;
 	right: 40%;
 	margin-right: -15%;
@@ -238,7 +242,7 @@ video {
 
 #x-minus {
 	width: 10%;
-	height: 10%;
+	height: 13%;
 	top: 5%;
 	left: 40%;
 	margin-left: -5%;
@@ -246,15 +250,22 @@ video {
 
 #take-picture {
 	width: 10%;
-	height: 10%;
+	height: 13%;
 	top: 5%;
 	left: 4%;
 }
 
 #next-picture {
 	width: 10%;
-	height: 10%;
+	height: 13%;
 	top: 5%;
+	right: 0%;
+}
+
+#next-color {
+	width: 10%;
+	height: 13%;
+	bottom: 5%;
 	right: 0%;
 }
 

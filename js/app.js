@@ -29,6 +29,12 @@
 	}
 	$(window).resize(resize);
 	$(window).ready(function () {
+		$('#change-gender').on('click', function(event) {
+			event.preventDefault();
+			(gender_selected == 'male') ? gender_selected = 'female' : gender_selected = 'male';
+			color_position = 0;
+			vests_position = 0;
+		});
 		resize();
 		$('.fancybox').fancybox();
 		$('#watchVideo').click(function () {
@@ -100,6 +106,7 @@
 	var chaleco_pos = 0;
 	var chaleco = $('.chalecos').get(chaleco_pos);
 	var changing_image = false;
+	var changing_color = false;
 
 	// mirror video
 	contextSource.translate(canvasSource.width, 0);
@@ -152,8 +159,11 @@
 	}
 
 	function drawVideo() {
+
+		// console.log('gender_selected = ' + gender_selected + ' - vests_position = ' + vests_position + ' - color_position = ' + color_position);
+		console.log(vests[gender_selected][vests_position].colors[color_position]);
 		contextSource.drawImage(video, 0, 0, video.width, video.height);
-		contextSource.drawImage(chaleco, image.x, image.y, image.w, image.h);
+		contextSource.drawImage($(vests[gender_selected][vests_position].colors[color_position]).get(0), image.x, image.y, image.w, image.h);
 
 	}
 
@@ -211,6 +221,54 @@
 		'Vamos a Tomar la Foto',
 		'Camara Activada',
 		];
+
+	var color_position = 0;
+
+	var vests_position = 0;
+
+	var gender_selected = 'male';
+
+	var vests = {
+		female : [
+			{
+				colors: [
+					'#female-01-blue',
+					'#female-01-gray',
+					'#female-01-green',
+				],
+			},
+			{
+				colors: [
+					'#female-02-beige',
+					'#female-02-black',
+					'#female-02-gray',
+					'#female-02-white',
+				],
+			},
+		],
+		male : [
+			{
+				colors: [
+					'#male-01-blue',
+					'#male-01-gray',
+					'#male-01-green',
+				],
+			},
+			{
+				colors: [
+					'#male-02-blue',
+				],
+			},
+			{
+				colors: [
+					'#male-03-beige',
+					'#male-03-green',
+				],
+			},
+		]
+	};
+
+	var changed_image = 0;
 
 	var decreaseNotific8 = function(){
 		var params = {
@@ -294,16 +352,30 @@
 		}
 	}
 
-	function changeImage(){
+	function changeVests(){
 
 		if(!changing_image){
-			console.log('changin image');
+			vests_position++;
+			color_position = 0;
+			if(vests_position == vests[gender_selected].length) vests_position = 0;
 			changing_image = true;
-			chaleco_pos++;
-			if(chaleco_pos == $('.chalecos').length) chaleco_pos = 0;
-			chaleco = $('.chalecos').get(chaleco_pos);
 			setTimeout(function(){
 				changing_image = false;
+			}, 2000);
+		}
+
+	}
+
+	function changeColor(){
+		console.log('changing_color = '+ changing_color);
+
+		if(!changing_color){
+			console.log('changin color');
+			color_position++;
+			if(color_position == vests[gender_selected][vests_position].colors.length) color_position = 0;
+			changing_color = true;
+			setTimeout(function(){
+				changing_color = false;
 			}, 2000);
 		}
 
@@ -337,7 +409,6 @@
 				image.y -= 5;
 				break;	
 			case 'take-picture':
-				console.log
 				if(enable_picture){
 					if(!taking_picture){
 						taking_picture = true;
@@ -346,7 +417,10 @@
 				} 
 				break;	
 			case 'next-picture':
-				changeImage();
+				changeVests();
+				break;	
+			case 'next-color':
+				changeColor();
 				break;			
 		}
 
