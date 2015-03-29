@@ -9,6 +9,7 @@
 	var content = $('#content');
 	var video = $('#webcam')[0];
 	var canvases = $('canvas');
+	var fb_data_href = 'http://programingphp.hol.es/uploads/';
 
 	var resize = function () {
 		var ratio = video.width / video.height;
@@ -29,6 +30,23 @@
 	}
 	$(window).resize(resize);
 	$(window).ready(function () {
+		/*$('#picture-save').on('submit', function(event) {
+			event.preventDefault();
+			$.ajax({
+				url: "./ajax/picture_save.php", // Url to which the request is send
+				type: "POST",             // Type of request to be send, called as method
+				data: new FormData(this), // Data sent to server, a set of key/value pairs (i.e. form fields and values)
+				contentType: false,       // The content type used when sending data to the server.
+				cache: false,             // To unable request pages to be cached
+				processData:false,        // To send DOMDocument or non processed data file it is set to false
+				success: function(data)   // A function to be called if request succeeds
+				{
+					console.log(data);
+					$('#loading').hide();
+					$("#message").html(data);
+				}
+			});
+		});*/
 		$('#change-gender').on('click', function(event) {
 			event.preventDefault();
 			(gender_selected == 'male') ? gender_selected = 'female' : gender_selected = 'male';
@@ -86,7 +104,7 @@
 		}, webcamError);
 	} else if (navigator.webkitGetUserMedia) {
 		navigator.webkitGetUserMedia({audio: false, video: true}, function (stream) {
-			video.src = window.webkitURL.createObjectURL(stream);
+			video.src = window.URL.createObjectURL(stream);
 			initialize();
 		}, webcamError);
 	} else {
@@ -161,10 +179,10 @@
 	function drawVideo() {
 
 		// console.log('gender_selected = ' + gender_selected + ' - vests_position = ' + vests_position + ' - color_position = ' + color_position);
-		console.log(vests[gender_selected][vests_position].colors[color_position]);
+		//console.log(vests[gender_selected][vests_position].colors[color_position]);
 		contextSource.drawImage(video, 0, 0, video.width, video.height);
 		contextSource.drawImage($(vests[gender_selected][vests_position].colors[color_position]).get(0), image.x, image.y, image.w, image.h);
-
+		contextSource.fillText($(vests[gender_selected][vests_position].colors[color_position]).attr("data-description"), 10,90);
 	}
 
 	function blend() {
@@ -305,7 +323,7 @@
 			decreaseNotific8();
 			decreaseCounter--;
 			console.log("waiting");
-	        document.getElementById('censor-beep-audio').play();
+	        //document.getElementById('censor-beep-audio').play();
 		},1000);;
 
 		setTimeout(function(){
@@ -322,6 +340,14 @@
 			var random = Math.floor(Math.random() * (max - min + 1)) + min;
 	        var img = document.createElement("img");
 	        img.src = canvasSource.toDataURL();
+	        $("#picture-data").attr('value',canvasSource.toDataURL());
+	        var downloadLink = document.getElementById('download-link');
+			downloadLink.href = img.src;
+			picture_name = Math.floor(Math.random() * (999999999)) + 1;
+			picture_name = CryptoJS.MD5(picture_name.toString()) + ".png";
+	        $("#picture-name").attr('value', picture_name);
+			downloadLink.setAttribute('download', picture_name); 
+			downloadLink.click(); 
 	        $(img).css("z-index",zindex);
 	        $(img).css({ WebkitTransform: 'rotate(' + random + 'deg)'});
 	        document.getElementById('camera-shutter-audio').play();
@@ -332,6 +358,42 @@
         	console.log('picture_taked');
         	taking_picture = false;
         	decreaseCounter = 5;
+        	var image_data = canvasSource.toDataURL();
+    		image_data = image_data.replace('data:image/png;base64,', '');
+    		$('.fb-post').attr('data-href',fb_data_href+picture_name);
+			// console.log(image_data);
+        	$.ajax({
+				url: "./ajax/picture_save.php", // Url to which the request is send
+				type: "POST",             // Type of request to be send, called as method
+		        data: { 
+		        	imageData : image_data,
+		        	imageName : picture_name
+		        	},
+		        // contentType: 'application/json; charset=utf-8',
+		        // dataType: 'json',
+				success: function(data)   // A function to be called if request succeeds
+				{
+					console.log(data);
+				},
+                error: function(err) {
+                	console.log(err);
+                    console.log('AWWW!');
+                },
+                progress: function(e) {
+                    if(e.lengthComputable) {
+                        var pct = (e.loaded / e.total) * 100;
+                        $('#prog')
+                            .progressbar('option', 'value', pct)
+                            .children('.ui-progressbar-value')
+                            .html(pct.toPrecision(3) + '%')
+                            .css('display', 'block');
+                    } else {
+                        console.warn('Content Length not reported!');
+                    }
+                }
+			}).done(function(o){
+				console.log(o);
+			});
 
 		}, 6000);        
 
@@ -367,10 +429,10 @@
 	}
 
 	function changeColor(){
-		console.log('changing_color = '+ changing_color);
+		//console.log('changing_color = '+ changing_color);
 
 		if(!changing_color){
-			console.log('changin color');
+			//console.log('changin color');
 			color_position++;
 			if(color_position == vests[gender_selected][vests_position].colors.length) color_position = 0;
 			changing_color = true;
@@ -440,7 +502,7 @@
 			if (average > 10) {
 				data = {confidence: average, spot: hotSpots[h]};
 				action = $(data.spot.el).attr('data-action');
-				console.log(action);
+				//console.log(action);
 				setImagePosition(action);
 				$(data.spot.el).trigger('motion', data);
 			}
@@ -486,8 +548,8 @@
       }, function(response){
 
           if (!response || response.error) {
-              console.log(response.error);
-              console.log(FB.getLoginStatus());
+              //console.log(response.error);
+              //console.log(FB.getLoginStatus());
           } else {
               alert('Post ID: ' + response.id);
           }

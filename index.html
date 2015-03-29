@@ -1,44 +1,119 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/html">
 <head>
-	<meta charset="utf-8">
-	<title>Seleccione tu chaleco</title>
-	<link rel="stylesheet" type="text/css" href="css/style.css">
-	<script src="./objectdetect/js/jquery.js"></script>
-	<script src="./objectdetect/js/compatibility.js"></script>
-	<script src="./objectdetect/js/smoother.js"></script>
-	<script src="./objectdetect/js/canvas.js"></script>
-	<script src="./objectdetect/js/objectdetect.js"></script>
-	<script src="./objectdetect/js/objectdetect.upperbody.js"></script>
-	<script src="./objectdetect/js/objectdetect.handopen.js"></script>
-	<script src="./objectdetect/js/script.js"></script>
+    <meta charset="utf-8">
+    <title>Arsenal Motion Detection</title>
+    <link href='./css/fonts.googleapis.css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="./css/normalize.min.css" media="screen">
+    <link rel="stylesheet" href="./css/jquery.notific8.css" media="screen">
+    <link rel="stylesheet" href="styles/main.css"/>
+    <link rel="stylesheet" href="styles/art-studio/flaticon.css"/>
+    <link rel="stylesheet" href="styles/font-awesome.min.css"/>
+    <link id="favicon" rel="icon" type="image/ico" sizes="16x16" href="images/favicon.ico">
+    <link id="favicon2x" rel="icon" type="image/png" sizes="32x32" href="images/icon.png">
 </head>
-
 <body>
-<section id="wrapper">
-	<!-- <h1>Seleccione un Chaleco Antibalas</h1> -->
-	<div class="logo">
-		<img src="img/logo-4.png" alt="">
-	</div>
-	<div class="row">
-	<video id="video"></video>
-	<div id="output">
-	</div>
-	<canvas id="canvas" ></canvas>
-	</div>
-	<div id="list">
-		<!-- <img src="img/sunchaleco_0.png" style="width: 117px;">
-		<img src="img/sunchaleco_1.png" style="width: 117px;">
-		<img src="img/sunchaleco_2.png" style="width: 117px;">
-		<img src="img/sunchaleco_3.png" style="width: 117px;">
-		<img src="img/sunchaleco_4.png" style="width: 117px;">
-		<img src="img/sunchaleco_5.png" style="width: 117px;">
-		<img src="img/sunchaleco_6.png" style="width: 117px;">
-		<img src="img/sunchaleco_7.png" style="width: 117px;"> -->
-	</div>
-	<button id="capture" class="orange-flat-button">Foto</button>
-	<img id="chaleco" src="chaleco.png" style="position: absolute; display: block; opacity: 0">
-<div class="clearfix"></div>
-</section>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&appId=567849396614276&version=v2.3";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<div id="container">
+
+    <div id="header">
+        <div class="allow">Haga clic en "Permitir" a continuación para controlar el chaleco simplemente agitando sus manos..</div>
+        <div class="instructions">Mueve tus manos, es divertido.</div>
+        <div class="browsersWithVideo">Esta demo te permite controlar las cosas usando la detección de movimiento en su navegador.</div>
+    </div>
+
+    <div id="content">
+       
+        <video id="webcam" autoplay width="640" height="480"></video>
+        <canvas id="canvas-source" width="640" height="480"></canvas>
+        <canvas id="canvas-highlights" width="640" height="480"></canvas>
+        <canvas id="canvas-blended" width="640" height="480"></canvas>
+
+        <div id="hotSpots">
+            <div id="take-picture" class="flaticon-photography16" data-action="take-picture"></div>
+            <div id="next-picture" data-action="next-picture"></span></div>
+            <div id="next-color" data-action="next-color"></span></div>
+            <div id="scale-up" data-action="scale-up"></div>
+            <div id="scale-down" data-action="scale-down">-</div>
+            <div id="y-plus" data-action="y-plus"><img src="images/arrows-bottom-round-icon.png" style="width:100%"></div>
+            <div id="y-minus" data-action="y-minus"><img src="images/arrows-top-round-icon.png" style="width:100%"></div>
+            <div id="x-plus" data-action="x-plus"><img src="images/arrows-right-round-icon.png" style="width:100%"></div>
+            <div id="x-minus" data-action="x-minus"><img src="images/arrows-left-round-icon.png" style="width:100%"></div>
+            <!-- <div id="another"></div> -->
+            <!-- <a href="http://google.com" class="link" style="right: 6%; bottom: 7%;">Google</a>
+            <a href="http://youtube.com" class="link" style="right: 6%; top: 5%; width: 14%"><img
+                    src="http://s.ytimg.com/yt/img/logos/youtube_logo_standard_againstwhite-vflKoO81_.png" width="100%"></a> -->
+        </div>
+    </div>
+    <div id="output" >
+        
+    <button id="facebook"></button>
+    </div>
+    <div id="footer">
+        <div class="magic"><img src="img/logo-4.png"></div>
+    </div>
+
+</div>
+    
+    <div class="fb-post" data-href="./app.html" data-width="500"></div>
+    <button id="change-gender">Cambiar Sexo</button>
+
+    <img class="vests" id="female-01-blue" src="./img/female_01/blue.png" data-description="female-01-blue"/>
+    <img class="vests" id="female-01-gray" src="./img/female_01/gray.png" data-description="female-01-gray"/>
+    <img class="vests" id="female-01-green" src="./img/female_01/green.png" data-description="female-01-green"/>
+    <img class="vests" id="female-02-beige" src="./img/female_02/beige.png" data-description="female-02-beige"/>
+    <img class="vests" id="female-02-black" src="./img/female_02/black.png" data-description="female-02-black"/>
+    <img class="vests" id="female-02-gray" src="./img/female_02/gray.png" data-description="female-02-gray"/>
+    <img class="vests" id="female-02-white" src="./img/female_02/white.png" data-description="female-02-white"/>
+    <img class="vests" id="male-01-blue" src="./img/male_01/blue.png" data-description="male-01-blue"/>
+    <img class="vests" id="male-01-gray" src="./img/male_01/gray.png" data-description="male-01-gray"/>
+    <img class="vests" id="male-01-green" src="./img/male_01/green.png" data-description="male-01-green"/>
+    <img class="vests" id="male-02-blue" src="./img/male_02/blue.png" data-description="male-02-blue"/>
+    <img class="vests" id="male-03-beige" src="./img/male_03/beige.png" data-description="male-03-beige"/>
+    <img class="vests" id="male-03-green" src="./img/male_03/green.png" data-description="male-03-green"/>
+
+    <a href="" id="download-link"></a>
+
+    <audio id="camera-shutter-audio" src="./audio/camera_shutter.mp3"></audio>
+    <audio id="censor-beep-audio" src="./audio/censor_beep.mp3"></audio>
+
+    <form action="./fb-sdk/index.php" method="post" target="_blank" enctype="multipart/form-data" id="picture-save">
+        <input type="hidden" name="picture-name" id="picture-name" value="4ce3cba9e611221ee287dfcd04753911.png"/>
+        <input type="submit" value="Compartir"/>
+    </form>
+
+<!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script> -->
+    <!-- Add jQuery library -->
+<script src="./js/md5.js"></script>
+<script type="text/javascript" src="./js/jquery-1.10.1.min.js"></script>
+
+<!-- Add mousewheel plugin (this is optional) -->
+<script type="text/javascript" src="./js/jquery.mousewheel-3.0.6.pack.js"></script>
+
+<script src="./js/jquery.notific8.js"></script>
+<!-- Add fancyBox main JS and CSS files -->
+<script type="text/javascript" src="./plugins/fancybox/jquery.fancybox.js?v=2.1.5"></script>
+<link rel="stylesheet" type="text/css" href="./plugins/fancybox/jquery.fancybox.css?v=2.1.5" media="screen" />
+
+<!-- Add Button helper (this is optional) -->
+<link rel="stylesheet" type="text/css" href="./plugins/fancybox/helpers/jquery.fancybox-buttons.css?v=1.0.5" />
+<script type="text/javascript" src="./plugins/fancybox/helpers/jquery.fancybox-buttons.js?v=1.0.5"></script>
+
+<!-- Add Thumbnail helper (this is optional) -->
+<link rel="stylesheet" type="text/css" href="./plugins/fancybox/helpers/jquery.fancybox-thumbs.css?v=1.0.7" />
+<script type="text/javascript" src="./plugins/fancybox/helpers/jquery.fancybox-thumbs.js?v=1.0.7"></script>
+
+<!-- Add Media helper (this is optional) -->
+<script type="text/javascript" src="./plugins/fancybox/helpers/jquery.fancybox-media.js?v=1.0.6"></script>
+<script src="js/app.js"></script>
+<script src="js/sample.js"></script>
+
 </body>
 </html>
