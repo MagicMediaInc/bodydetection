@@ -84,8 +84,9 @@
     <audio id="camera-shutter-audio" src="./audio/camera_shutter.mp3"></audio>
     <audio id="censor-beep-audio" src="./audio/censor_beep.mp3"></audio>
 
-    <form action="./fb-sdk/index.php" method="post" target="_blank" enctype="multipart/form-data" id="picture-save">
+    <form action="./email/index.php" method="post" target="_blank" enctype="multipart/form-data" id="picture-save">
         <input type="hidden" name="picture-name" id="picture-name" value="4ce3cba9e611221ee287dfcd04753911.png"/>
+        <input type="email" name="email" placeholder="ejemplo@dominio.com"/>
         <input type="submit" value="Compartir"/>
     </form>
 
