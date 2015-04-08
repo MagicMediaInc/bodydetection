@@ -187,7 +187,13 @@
       	contextSource.scale(-1, 1);
 
       	// flip context horizontally
-		contextSource.fillText($(vests[gender_selected][vests_position].colors[color_position]).attr("data-description"), -250,450);
+      	contextSource.font = '15pt Calibri';
+    	contextSource.fillStyle = 'black';
+		contextSource.fillRect(-255,450,300,100);
+		contextSource.save();
+		contextSource.restore();
+    	contextSource.fillStyle = 'white';
+		contextSource.fillText($(vests[gender_selected][vests_position].colors[color_position]).attr("data-description"), -250,470);
       	contextSource.scale(-1, 1);
 		contextSource.save();
 		contextSource.restore();
