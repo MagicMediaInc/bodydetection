@@ -26,18 +26,18 @@
 	$mail = new PHPMailer();
 
 	$mail->isSMTP();                                      // Set mailer to use SMTP
-	$mail->Host = 'mx1.hostinger.co';  // Specify main and backup SMTP servers
+	$mail->Host = 'ssl://smtp.gmail.com';  // Specify main and backup SMTP servers
 	$mail->SMTPAuth = true;                               // Enable SMTP authentication
-	$mail->Username = 'dressroom@arsenalindustries.hol.es';                 // SMTP username
-	$mail->Password = 'ugiS3Btnes';                           // SMTP password
-	$mail->SMTPSecure = 'smtp';                            // Enable TLS encryption, `ssl` also accepted
-	$mail->Port = 2525;                                    // TCP port to connect to
+	$mail->Username = 'magicmediave@gmail.com';                 // SMTP username
+	$mail->Password = 'robert18554560';                           // SMTP password
+	$mail->SMTPSecure = 'TLS';                            // Enable TLS encryption, `ssl` also accepted
+	$mail->Port = 587;                                    // TCP port to connect to
 
-	$mail->From = 'dressroom@arsenalindustries.hol.es';
+	$mail->From = 'magicmediave@gmail.com';
 	$mail->FromName = 'Arsenal Industries';
 	$mail->addAddress($_POST['email']);     // Add a recipient
 	// $mail->addAddress('ellen@example.com');               // Name is optional
-	$mail->addReplyTo('dressroom@arsenalindustries.hol.es', 'Arsenal Industries');
+	$mail->addReplyTo('magicmediave@gmail.com', 'Arsenal Industries');
 	// $mail->addCC('cc@example.com');
 	// $mail->addBCC('bcc@example.com');
 
