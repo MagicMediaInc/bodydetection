@@ -182,7 +182,21 @@
 		//console.log(vests[gender_selected][vests_position].colors[color_position]);
 		contextSource.drawImage(video, 0, 0, video.width, video.height);
 		contextSource.drawImage($(vests[gender_selected][vests_position].colors[color_position]).get(0), image.x, image.y, image.w, image.h);
-		contextSource.fillText($(vests[gender_selected][vests_position].colors[color_position]).attr("data-description"), 10,90);
+		// translate context to center of canvas
+      	contextSource.translate(0, 0);
+      	contextSource.scale(-1, 1);
+
+      	// flip context horizontally
+      	contextSource.font = '15pt Calibri';
+    	contextSource.fillStyle = 'black';
+		contextSource.fillRect(-255,450,300,100);
+		contextSource.save();
+		contextSource.restore();
+    	contextSource.fillStyle = 'white';
+		contextSource.fillText($(vests[gender_selected][vests_position].colors[color_position]).attr("data-description"), -250,470);
+      	contextSource.scale(-1, 1);
+		contextSource.save();
+		contextSource.restore();
 	}
 
 	function blend() {
@@ -444,31 +458,35 @@
 	}
 
 	function setImagePosition(action){
-
+		console.log("x:"+image.x+", y:"+image.y+', w:'+image.w+', h:'+image.h);
 		switch(action){
 			case 'scale-up':
-				image.w += 3;
-				image.h = image.h/(image.w-3)*image.w;
-				image.x--;
-				image.y--;
+				if(image.w < 250){
+					image.w += 3;
+					image.h = image.h/(image.w-3)*image.w;
+					image.x--;
+					image.y--;
+				}
 				break;
 			case 'scale-down':
-				image.w -= 3;
-				image.h = image.h/(image.w+3)*image.w;
-				image.x++;
-				image.y++;
+				if(image.w > 175){
+					image.w -= 3;
+					image.h = image.h/(image.w+3)*image.w;
+					image.x++;
+					image.y++;
+				}
 				break;
 			case 'x-plus':
-				image.x -= 5;
+				if(image.x >= 125) image.x -= 5;
 				break;
 			case 'x-minus':
-				image.x += 5;
+				if(image.x <= 305) image.x += 5;
 				break;
 			case 'y-plus':
-				image.y += 5;
+				if(image.y <= 195) image.y += 5;
 				break;
 			case 'y-minus':
-				image.y -= 5;
+				if(image.y >= 75) image.y -= 5;
 				break;	
 			case 'take-picture':
 				if(enable_picture){
