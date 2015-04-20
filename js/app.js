@@ -177,7 +177,8 @@
 	}
 
 	function drawVideo() {
-
+		var logo=document.createElement('img');
+		logo.src='img/logo-4.png';
 		// console.log('gender_selected = ' + gender_selected + ' - vests_position = ' + vests_position + ' - color_position = ' + color_position);
 		//console.log(vests[gender_selected][vests_position].colors[color_position]);
 		contextSource.drawImage(video, 0, 0, video.width, video.height);
@@ -185,15 +186,18 @@
 		// translate context to center of canvas
       	contextSource.translate(0, 0);
       	contextSource.scale(-1, 1);
-
+      	contextSource.save()
+      	contextSource.scale(1, 1);
+		contextSource.drawImage(logo, -600, 400, 140, 38);
+		contextSource.restore()
       	// flip context horizontally
       	contextSource.font = '15pt Calibri';
     	contextSource.fillStyle = 'black';
-		contextSource.fillRect(-255,450,300,100);
+		contextSource.fillRect(-650,450,650,100);
 		contextSource.save();
 		contextSource.restore();
-    	contextSource.fillStyle = 'white';
-		contextSource.fillText($(vests[gender_selected][vests_position].colors[color_position]).attr("data-description"), -250,470);
+    	contextSource.fillStyle = 'green';
+		contextSource.fillText($(vests[gender_selected][vests_position].colors[color_position]).attr("data-description"), -600,470);
       	contextSource.scale(-1, 1);
 		contextSource.save();
 		contextSource.restore();

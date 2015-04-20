@@ -13,14 +13,6 @@
     <link id="favicon2x" rel="icon" type="image/png" sizes="32x32" href="images/icon.png">
 </head>
 <body>
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&appId=567849396614276&version=v2.3";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
 <div id="container">
 
     <div id="header">
@@ -37,15 +29,15 @@
         <canvas id="canvas-blended" width="640" height="480"></canvas>
 
         <div id="hotSpots">
-            <div id="take-picture" class="flaticon-photography16" data-action="take-picture"></div>
-            <div id="next-picture" data-action="next-picture"></span></div>
-            <div id="next-color" data-action="next-color"></span></div>
-            <div id="scale-up" data-action="scale-up"></div>
-            <div id="scale-down" data-action="scale-down">-</div>
-            <div id="y-plus" data-action="y-plus"><img src="images/arrows-bottom-round-icon.png" style="width:100%"></div>
-            <div id="y-minus" data-action="y-minus"><img src="images/arrows-top-round-icon.png" style="width:100%"></div>
-            <div id="x-plus" data-action="x-plus"><img src="images/arrows-right-round-icon.png" style="width:100%"></div>
-            <div id="x-minus" data-action="x-minus"><img src="images/arrows-left-round-icon.png" style="width:100%"></div>
+            <div id="take-picture" data-action="take-picture"><img src="images/take-picture.png" style="width:100%"></div>
+            <div id="next-picture" data-action="next-picture"><img src="images/next-picture.png" style="width:100%"></div>
+            <div id="next-color" data-action="next-color"><img src="images/next-color.png" style="width:100%"></span></div>
+            <div id="scale-up" data-action="scale-up"><img src="images/scale-up.png" style="width:100%"></div>
+            <div id="scale-down" data-action="scale-down"><img src="images/scale-down.png" style="width:100%"></div>
+            <div id="y-plus" data-action="y-plus"><img src="images/y-plus.png" style="width:100%"></div>
+            <div id="y-minus" data-action="y-minus"><img src="images/y-minus.png" style="width:100%"></div>
+            <div id="x-plus" data-action="x-plus"><img src="images/x-plus.png" style="width:100%"></div>
+            <div id="x-minus" data-action="x-minus"><img src="images/x-minus.png" style="width:100%"></div>
             <!-- <div id="another"></div> -->
             <!-- <a href="http://google.com" class="link" style="right: 6%; bottom: 7%;">Google</a>
             <a href="http://youtube.com" class="link" style="right: 6%; top: 5%; width: 14%"><img
@@ -54,16 +46,15 @@
     </div>
     <div id="output" >
         
-    <button id="facebook"></button>
     </div>
-    <div id="footer">
-        <div class="magic"><img src="img/logo-4.png"></div>
-    </div>
+    <!-- <div id="footer">
+        <div class="magic"><img src="img/logo-4.png" width="70%" height="70%"></div>
+    </div> -->
 
 </div>
     
     <div class="fb-post" data-href="./app.html" data-width="500"></div>
-    <button id="change-gender">Cambiar Sexo</button>
+    <button id="change-gender">Cambiar para ver si estoy en el correcto Sexo</button>
 
     <img class="vests" id="female-01-blue" src="./img/female_01/blue.png" data-description="female-01-blue"/>
     <img class="vests" id="female-01-gray" src="./img/female_01/gray.png" data-description="female-01-gray"/>
@@ -72,23 +63,23 @@
     <img class="vests" id="female-02-black" src="./img/female_02/black.png" data-description="female-02-black"/>
     <img class="vests" id="female-02-gray" src="./img/female_02/gray.png" data-description="female-02-gray"/>
     <img class="vests" id="female-02-white" src="./img/female_02/white.png" data-description="female-02-white"/>
-    <img class="vests" id="male-01-blue" src="./img/male_01/blue.png" data-description="male-01-blue"/>
-    <img class="vests" id="male-01-gray" src="./img/male_01/gray.png" data-description="male-01-gray"/>
-    <img class="vests" id="male-01-green" src="./img/male_01/green.png" data-description="male-01-green"/>
-    <img class="vests" id="male-02-blue" src="./img/male_02/blue.png" data-description="male-02-blue"/>
-    <img class="vests" id="male-03-beige" src="./img/male_03/beige.png" data-description="male-03-beige"/>
-    <img class="vests" id="male-03-green" src="./img/male_03/green.png" data-description="male-03-green"/>
+    <img class="vests" id="male-01-blue" src="./img/male_01/blue.png" data-description="Policial Interno - 2,2 y 3,0 Kg - Niveles de Proteccion IIA, II, IIIA"/>
+    <img class="vests" id="male-01-gray" src="./img/male_01/gray.png" data-description="Policial Interno - 2,2 y 3,0 Kg - Niveles de Proteccion IIA, II, IIIA"/>
+    <img class="vests" id="male-01-green" src="./img/male_01/green.png" data-description="Policial Interno - 2,2 y 3,0 Kg - Niveles de Proteccion IIA, II, IIIA"/>
+    <img class="vests" id="male-02-blue" src="./img/male_02/blue.png" data-description="Policial Tactico - 3,0 y 3,5 Kg - Niveles de Proteccion IIA, II, IIIA, III, IV"/>
+    <img class="vests" id="male-03-beige" src="./img/male_03/beige.png" data-description="Militar Tactico - 3,0 y 3,5 Kg - Niveles de Proteccion IIA, II, IIIA, III, IV"/>
+    <img class="vests" id="male-03-green" src="./img/male_03/green.png" data-description="Militar Tactico - 3,0 y 3,5 Kg - Niveles de Proteccion IIA, II, IIIA, III, IV"/>
 
     <a href="" id="download-link"></a>
 
     <audio id="camera-shutter-audio" src="./audio/camera_shutter.mp3"></audio>
     <audio id="censor-beep-audio" src="./audio/censor_beep.mp3"></audio>
 
-    <form action="./email/index.php" method="post" target="_blank" enctype="multipart/form-data" id="picture-save">
+    <!-- <form action="./email/index.php" method="post" target="_blank" enctype="multipart/form-data" id="picture-save">
         <input type="hidden" name="picture-name" id="picture-name" value="4ce3cba9e611221ee287dfcd04753911.png"/>
         <input type="email" name="email" placeholder="ejemplo@dominio.com"/>
         <input type="submit" value="Compartir"/>
-    </form>
+    </form> -->
 
 <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script> -->
     <!-- Add jQuery library -->

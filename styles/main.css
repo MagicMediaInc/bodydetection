@@ -125,15 +125,20 @@ video {
 }
 
 #footer {
+	background-color:  rgba(255,255,255,0.3);
 	position: absolute;
-	height: 60px;
-	bottom: 0;
+	width: 20%;
+	height: 50px;
+	bottom: 22px;
 	left: 0;
 	right: 0;
 	overflow: hidden;
 	z-index: 1;
+	vertical-align: center;
 }
-
+#footer img{
+	vertical-align: center;
+}
 #footer a {
 	color: #aaa;
 	text-decoration: underline;
@@ -146,7 +151,8 @@ video {
 
 .magic {
 	float: left;
-	padding-left: 20px;
+	padding-left: 30px;
+	padding-top: 10px;
 	font-size: 20px;
 	color: #AAA;
 	line-height: 55px;
@@ -196,10 +202,10 @@ video {
 
 /* Feel free to change this or turn it off altogether*/
 .active {
-	background: rgba(255, 255, 255, 0.7);
+	/*background: rgba(255, 255, 255, 0.7);
 	-moz-transition: all 150ms linear;
 	-webkit-transition: all 150ms linear;
-	transition: all 150ms linear;
+	transition: all 150ms linear;*/
 }
 
 /* Sample hotspots */
@@ -220,14 +226,14 @@ video {
 #y-plus {
 	width: 10%;
 	height: 13%;
-	bottom: 40%;
+	bottom: 50%;
 	right: 0%;
 	margin-bottom: -15%;
 }
 #y-minus {
 	width: 10%;
 	height: 13%;
-	top: 40%;
+	top: 35%;
 	right: 0%;
 	margin-top: -5%;
 }
