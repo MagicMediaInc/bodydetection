@@ -191,12 +191,12 @@
 		contextSource.drawImage(logo, -600, 400, 140, 38);
 		contextSource.restore()
       	// flip context horizontally
-      	contextSource.font = '15pt Calibri';
+      	contextSource.font = '15pt Impact';
     	contextSource.fillStyle = 'black';
 		contextSource.fillRect(-650,450,650,100);
 		contextSource.save();
 		contextSource.restore();
-    	contextSource.fillStyle = 'green';
+    	contextSource.fillStyle = 'white';
 		contextSource.fillText($(vests[gender_selected][vests_position].colors[color_position]).attr("data-description"), -600,470);
       	contextSource.scale(-1, 1);
 		contextSource.save();

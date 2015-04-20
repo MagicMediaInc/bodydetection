@@ -8,6 +8,7 @@ body {
 }
 .form-image{
 	float: right;
+	margin-top: -50px;
 	padding-right: 50px;
 	/*padding-bottom: 90px;*/
 }.form-image input[type="email"]{
