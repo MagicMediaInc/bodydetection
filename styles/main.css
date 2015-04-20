@@ -306,7 +306,7 @@ canvas{
 	position:absolute;
 	display: inline-block;
 	top:28%;
-	right: 40px;
+	right: 0px;
 	width:20%;
 	float: right;
 }

@@ -81,10 +81,10 @@
     <audio id="camera-shutter-audio" src="./audio/camera_shutter.mp3"></audio>
     <audio id="censor-beep-audio" src="./audio/censor_beep.mp3"></audio>
     <div class="form-image">
-    <form action="./email/index.php" method="post" target="_blank" enctype="multipart/form-data" id="picture-save">
+    <form id="emailme" action="#" method="post" enctype="multipart/form-data" id="picture-save">
         <input type="hidden" name="picture-name" id="picture-name" value="4ce3cba9e611221ee287dfcd04753911.png"/>
-        <input type="email" name="email" placeholder="ejemplo@dominio.com"/>
-        <input type="submit" value="Compartir"/>
+        <input id="mi-email" type="email" name="email" placeholder="ejemplo@dominio.com"/>
+        <input id="enviar-email" type="submit" value="Compartir"/>
     </form>
     </div>
 
@@ -113,6 +113,24 @@
 <script type="text/javascript" src="./plugins/fancybox/helpers/jquery.fancybox-media.js?v=1.0.6"></script>
 <script src="js/app.js"></script>
 <script src="js/sample.js"></script>
+<script type="text/javascript">
+    $(document).on("ready", function(){
+        $("#emailme").on("submit",function(e){
+            e.preventDefault();
+            $.ajax({
+                url:"./email/index.php",
+                method:"POST",
+                data:$("#emailme").serialize(),
+                success:function(data){
+                    console.log(data);
+                    
+                        alert(data);
+                        $("#mi-email").val("");
 
+                }
+            })
+        })
+    })
+</script>
 </body>
 </html>
