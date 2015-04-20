@@ -1,0 +1,2 @@
+[20-Apr-2015 07:56:52 America/Caracas] PHP Parse error:  syntax error, unexpected ',' in /home/arsenalindus/public_html/mirror/email/index.php on line 48
+[20-Apr-2015 07:58:07 America/Caracas] PHP Warning:  mysqli_connect(): (28000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home/arsenalindus/public_html/mirror/email/index.php on line 21
