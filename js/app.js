@@ -266,21 +266,7 @@
 
 	var vests = {
 		female : [
-			{
-				colors: [
-					'#female-01-blue',
-					'#female-01-gray',
-					'#female-01-green',
-				],
-			},
-			{
-				colors: [
-					'#female-02-beige',
-					'#female-02-black',
-					'#female-02-gray',
-					'#female-02-white',
-				],
-			},
+			
 		],
 		male : [
 			{
@@ -297,8 +283,37 @@
 			},
 			{
 				colors: [
+					'#male-04-blue',
+					'#male-04-gray',
+					'#male-04-green',
+				],
+			},
+			{
+				colors: [
+					'#male-05-beige',
+					'#male-05-black',
+					'#male-05-gray',
+					'#male-05-white',
+				],
+			},
+			{
+				colors: [
 					'#male-03-beige',
 					'#male-03-green',
+				],
+			},
+			{
+				colors: [
+					'#male-06-black',
+					'#male-06-white',
+					'#male-06-gray',
+					'#male-06-beige',
+				],
+			},{
+				colors: [
+					'#male-07-blue',
+					'#male-07-gray',
+					
 				],
 			},
 		]
